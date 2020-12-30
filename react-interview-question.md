@@ -6,22 +6,24 @@ The KEY difference is "diffing". It figures what changed and updates only that i
 
 Shadow DOM is browser specific and is used updating certain HTML elements( e.g. Slider)
 
-1.Browsers maintain the real DOM.
-2. Directly updates and manipualates the HTML
-3. Creates a new DOM/full repaint if it is updated
-4. An object based respresentation of HTMl DOcument and the interface for manipulating the object
+#### Real DOM
 
+1.Browsers maintain the real DOM.  
+2. Directly updates and manipualates the HTML   
+3. Creates a new DOM/full repaint if it is updated   
+4. An object based respresentation of HTMl DOcument and the interface for manipulating the object  
 
+#### Virtual DOM
 
-1.Can't direclty update the HTML.
-2.Acts as a copy of the real DOM, which can be frequently manipulated and updated without a page refresh
-3. Virtual DOM is a pattern rather than technology
-4. Sync'ed with real DOM with react-dom
+1.Can't direclty update the HTML.  
+2.Acts as a copy of the real DOM, which can be frequently manipulated and updated without a page refresh  
+3. Virtual DOM is a pattern rather than technology   
+4. Sync'ed with real DOM with react-dom   
 
 
 ### React Limitations
 
-1. It is a library and not framework. Next.js and Gatsby.js are full frameworks that provide scaffolding,additional functions.
+1. It is a library and not framework. Next.js and Gatsby.js are full React based frameworks that provide scaffolding,additional functions.
 2. It is a large library.
 3. maintained by facebook and future roadmap is decided by internal team
 4. Documentation is not exhaustive for newer features.
