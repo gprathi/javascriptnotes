@@ -1,3 +1,14 @@
+[Virtual DOM](#virtual-dom)  
+[React Limitations](#react-limitations)  
+[JSX](#jsx)  
+[Props](#state-and-lifecycle)  
+[State and Lifecycle](#state-and-lifecycle)
+[Hooks](#effects)
+[Context](#conext)
+[Misc](#miscellanous)
+
+
+
 ### Virtual DOM
 
 a) What is the difference between Virtual DOM and Real DOM

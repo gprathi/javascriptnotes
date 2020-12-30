@@ -3,4 +3,5 @@
 3. [Javascript ARRAYS & SETS](javascript_arrays.md)
 4. [Javascript CLASSES](javascript_classes.md)
 5. [DOM Manipulation with Javascript](javascript_DOM.md)
-6. [Javscript ESEENTIALs](javascript_essentials.md)
+6. [ASYNC JAVASCRIPT: promises,await](javascript_async.md)
+7. [Javscript ESEENTIALs](javascript_essentials.md)
