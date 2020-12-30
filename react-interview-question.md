@@ -2,10 +2,10 @@
 [React Limitations](#react-limitations)  
 [JSX](#jsx)  
 [Props](#state-and-lifecycle)  
-[State and Lifecycle](#state-and-lifecycle)
-[Hooks](#effects)
-[Context](#conext)
-[Misc](#miscellanous)
+[State and Lifecycle](#state-and-lifecycle)   
+[Hooks](#effects)  
+[Context](#conext)  
+[Misc](#miscellanous)  
 
 
 
