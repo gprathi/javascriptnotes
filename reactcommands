@@ -1,0 +1,37 @@
+*** Create react app using npx
+
+npx create-react-app react-counter
+
+**** Output 
+
+Creating a new React app in /home/boring/frontend/react/react-counter.
+
+Installing packages. This might take a couple of minutes.
+Installing react, react-dom, and react-scripts with cra-template...
+
+
+***** Start the react app
+
+npm run start
+
+
+**** git commands to push the files to github
+
+git commit -m "first commit"
+git remote add origin git@github.com:gprathi/react-counter.git
+git push -u origin master
+
+**** sample gitignore file
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build

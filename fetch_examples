@@ -1,0 +1,117 @@
+fetch('people.json')
+    .then(response => response.json())
+    .then( jsonfile => {
+     
+        let listOfNames = '';
+
+        for( let i=0; i < jsonfile.length  ; i++){
+            listOfNames = listOfNames.concat(',',jsonfile[i].name);
+        }
+        
+        const div = document.createElement('div');
+        div.innerHTML = listOfNames;
+        document.body.appendChild(div);
+    })
+
+
+fetch('people.json')
+    .then( res => res.json() )
+    .then( json => {
+        json.forEach( person => {
+            const div = document.createElement('div');
+            div.innerHTML = person.name;
+            document.body.appendChild(div);
+        })
+    })
+
+fetch('https://jsonplaceholder.typicode.com/photos/1') // Add the URL
+	.then(res => res.json()) // Process the data
+	.then(json => { 
+		const img = document.createElement('img');
+        console.log(json.url);
+		img.src = json.thumbnailUrl; // Set the image source to the image URL value
+		document.body.appendChild(img);
+	}); 
+
+document.getElementById('fetchForm').addEventListener('submit', submitPost);
+
+async function submitPost(e) {
+    e.preventDefault();
+    
+    let title = document.getElementById('titleInput').value;
+    let body = document.getElementById('bodyInput').value;
+    
+    const options = {
+        method: 'POST',
+        body: JSON.stringify({title: title, body: body}),
+        headers: new Headers({
+            "Content-Type": "application/json"
+        })
+    };
+    
+    const postPromise = await fetch(
+        'https://jsonplaceholder.typicode.com/posts',
+        options
+    );
+    
+    const post = await postPromise.json();
+    
+    title = post.title;
+    body = post.body;
+    
+    document.querySelector('.card-title').innerHTML = title;
+    document.querySelector('.card-text').innerHTML = body;
+    
+    document.getElementById('fetchForm').reset();
+}
+
+// Create 4 variables and assign them to their respective elements: setupDiv, punchlinDiv, punchlineBtn, newJokeBtn
+
+const setupDiv = document.getElementById("setup");
+const punchlineDiv = document.getElementById("punchline");
+const punchlineBtn = document.getElementById("punchlineBtn");
+const newJokeBtn = document.getElementById("newJokeBtn");
+let punchline;
+
+// Add an event listener for the punchline button. When clicked it should call a function called getPunchline
+/* Create the getPunchline function. This function should: 
+    Insert the punchline into the punchlineDiv
+    Add the class "bubble" to the punchlineDiv
+    Toggle the "hidden" class on both buttons.
+*/
+punchlineBtn.addEventListener('click', getPunchline);
+
+// Add an event listener for the new joke button. When clicked it should call the getJoke function 
+newJokeBtn.addEventListener('click', getJoke);
+
+function getPunchline() {
+    punchlineDiv.innerHTML = punchline;
+    punchlineDiv.classList.add('bubble');
+    punchlineBtn.classList.toggle('hidden');
+    newJokeBtn.classList.toggle('hidden');
+}
+
+// Setup an async function called getJoke
+// Create a variable called jokePromise that fetches a joke from https://official-joke-api.appspot.com/jokes/programming/random
+// create a variable called joke that consumes the json data
+
+async function getJoke() {
+    const jokePromise = await fetch('https://official-joke-api.appspot.com/jokes/programming/random');
+    const joke = await jokePromise.json();
+    
+    // Get the setup from the joke and insert it into the setupDiv element
+    setupDiv.innerHTML = joke[0].setup;
+    
+    // Create a global variable called punchline which will store the current punchline and will be updated with each new joke
+    // Assign the current jokes punchline to the punchline variable.
+    punchline = joke[0].punchline;
+    
+    // Clear the punchline div and remove the "bubble" class from the punchline div
+    punchlineDiv.innerHTML = "";
+    punchlineDiv.classList.remove('bubble');
+    
+    punchlineBtn.classList.toggle('hidden');
+    newJokeBtn.classList.toggle('hidden');
+}
+
+getJoke();

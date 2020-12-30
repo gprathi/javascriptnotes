@@ -1,0 +1,106 @@
+docker run {image_id}
+docker run -d {image_id}  ( runs in background )
+docker images ( ll images )
+docker ps
+docker kill {CONTAINER_ID}
+docker build . ( will run the docker file to create an image)
+docker build . -t "imagename" 
+
+# Use NodeJS base image
+FROM node:13
+
+# Create app directory in Docker
+WORKDIR /usr/src/app
+
+# Install app dependencies by copying
+# package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies in Docker
+RUN npm install
+
+# Copy app from local environment into the Docker image
+COPY . .
+
+# Set the API’s port number
+EXPOSE 8080
+
+# Define Docker’s behavior when the image is run
+CMD ["node", "server.js"]
+
+
+
+
+Viewing Logs
+docker logs
+
+Attaching to a Container
+docker exec -it sh
+
+View Docker Processes
+docker ps
+
+View Details of Docker Objects
+docker inspect
+
+
+************Aws 
+
+aws lambda invoke --function-name testEvent \
+ --invocation-type Event \
+ --log-type Tail \
+ --payload '{"name":"Govind"}'\
+  result.txt
+
+aws lambda invoke --function-name testEvent \ 
+ --invocation-type RequestResponse \  
+ --log-type Tail \
+ --payload '{"name":"Govind"}'\ 
+  result.txt
+
+
+******* custom authorizer ****************************
+exports.handler = async (event) => {
+   // Contains a token
+   const token = event.authorizationToken
+
+   // Check a token here
+
+  return {
+     principalId: 'user-id', // Unique user id
+     policyDocument: {
+       Version: '2012-10-17',
+       Statement: [
+         {
+           Action: 'execute-api:Invoke',
+           Effect: 'Allow',
+           Resource: '*'
+         }
+       ]
+     }
+   }
+
+ }
+
+import { verify } from 'jsonwebtoken'
+
+ const jwtToken = '...'
+ const secret = '...'
+
+ verify(jwt, secret)
+ // If an exception is not thrown a JWT is valid
+
+
+
+const docClient = new AWS.DynamoDB.DocumentClient()
+ ...
+ const result = await docClient.scan({ // Call parameters
+   TableName: "Users",
+   Limit: 20
+ }).promise()
+
+
+
+******** Mount windows share *****
+
+sudo mount -t cifs //disk24/technology-shared/ /mnt/windows_share -o username=e109829

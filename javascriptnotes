@@ -1,0 +1,220 @@
+
+
+ a) Temlate Literals
+
+back ticks
+
+b) Destructing objects
+
+ const player = {
+
+   name: 'lebron James',
+   club: 'LA Lakers',
+   address: {
+      city: 'Los Angeles'
+  }
+};
+
+const { name, club, address: { city} } = player
+
+c) Destructuring arrays
+
+let [ fname,mname, lname ] = ['Sriramya','Govind','Prathi']
+
+console.log(fname,mname, lname)
+
+d) Object Literal
+
+
+
+e) for of loop
+
+const family = [ 'Govind', 'Sri', Dhwani', Shourya' ]
+const name = "Govind"
+for ( const member of family ){
+  console.log(member)
+}
+
+for ( const char of name){
+ console.log(char);
+}
+
+Spread operator:
+
+let contacts = ["Mary", "Joel", "Danny"];
+
+let personalFriends = [ "David", ...contacts, "Lily" ];
+
+contacts.push("John");
+
+
+let person = {
+    name: "Adam",
+    age: 25,
+    city: "Manchester"
+}
+
+let employee = {
+    ...person,
+    salary: 50000,
+    position: "Software Developer"
+}
+
+console.log(employee)
+
+
+g) Rest operator
+
+function add(...nums) {
+    
+    console.log(nums);
+}
+
+add(4, 5, 7, 8, 12)
+;
+
+
+h) Arrow Functions
+
+const eveningSnack = snack => `I am going to eat ${snack} for evening Snacks`;
+
+console.log(eveningSnack("biscuits"));
+
+*** snack is single parameter passed to function eveningSnack, single return value of the string.
+
+Default parameter for the function:
+
+const leadSinger = (artist = "someone") => {
+    console.log(`${artist} is the lead singer of Cold Play`);
+}
+
+leadSinger("Chris Martin");
+leadSinger();
+
+*** we assign a default value "someone" to the artist
+
+const shopping = (food = "something") => `I am going to buy ${food} from the grocery shop`;
+
+console.log(shopping("milk"));
+console.log(shopping());
+
+
+i) includes
+
+
+
+/*
+    ** includes() Challenge
+        * You want to make a chocolate cake
+        * And you have a list of ingredients represented with an array
+        * Using the JavaScript includes() function
+        * Check if you have the ingredient chocolate in your list of ingredients, and print into the console "We are going to make a chocolate cake" if you have it
+        * Else print into the console "We can't make a chocolate cake because we are missing the ingredient chocolate"
+*/
+
+const listIngredients =  [ "flour", "sugar", "eggs", "butter" ];
+
+if(listIngredients.includes("chocolate")){
+ console.log("We are going to make chocolate cake");   
+}
+else{
+    console.log("We can't make choclate cake because we ae missing the ingredient");
+}
+
+j) let & const
+
+const for primitive types is immutable, but for arryays and object - we can assign values in the arrary but not change the assignment diretly
+
+
+k) import and export
+
+data.js
+
+export const add = (num1, num2) => num1+num2;
+
+
+index.js
+import { add } from './data.js';
+const result = add(1,2);
+console.log(result);
+
+
+l) Classes
+
+
+m) fetch
+
+fetch('https://jsonplaceholder.typicode.com/comments/1')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    
+fetch('https://jsonplaceholder.typicode.com/comments',{
+    method: 'POST',
+    body: JSON.stringify({
+        name: 'Test',
+        email: "testmail@test.com",
+        body: "Testing Fetch POST commands"
+    })
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+    
+
+n)
+
+const photos = [];
+
+async function photoUpload() {
+    let uploadStatus = new Promise( (resolve, reject) => {
+        setTimeout( () => {
+            photos.push("Profile Pic");
+            resolve("Photo Uploaded")
+        }, 3000)
+    })
+    
+    let result = uploadStatus;
+    
+    console.log(result);
+    console.log(photos.length);
+}
+
+photoUpload();
+
+o) Promise
+
+
+const data = new Promise((resolve, reject) => {
+    const error = false;
+    if(error){
+        reject('500 Image not found')
+    }
+    else{
+        resolve({
+            name: "Govind",
+            age: "41",
+            country: "India"}
+        )
+    }
+})
+
+data.then((data) => console.log(data)).catch((error) => console.log(error));
+
+const apiUrl = "https://api.chucknorris.io/jokes/random";
+
+
+
+let jokePromise = fetch(apiUrl)
+ jokePromise
+ .then((response) => response.json()).then((data) => console.log(data))
+
+
+const apiUrl = "https://api.chucknorris.io/jokes/random";
+
+async function getJoke() {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    
+    console.log(data);
+}
+
+getJoke();
